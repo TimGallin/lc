@@ -1,0 +1,2 @@
+# lc
+LeetCode record
