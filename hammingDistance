@@ -1,0 +1,16 @@
+leetcode:https://leetcode.com/problems/hamming-distance/#/description
+
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int val = x^y;
+        int dest =0;
+        
+        while(val !=0){
+            val&=(val-1);
+            dest++;
+        }
+        
+        return dest;
+    }
+};
