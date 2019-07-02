@@ -44,11 +44,51 @@ def num_of_ways(data) :
 
     return decode(data, len(data), memo)
 
+def num_of_way_bottom_to_top(data):
+    #add some pre-check here(if char c <1 || c>26 then return 0)
+
+    length = len(data)
+    memo = [0]*( length + 1)
+
+    index = 0
+
+    for index in range(length) :
+        if int(data[index : index + 2]) > 26 :
+            break
+
+    memo[index + 1] = 1
+    memo[index] = 1
+
+    index -= 1
+
+    while index >=0 :
+        v=0
+        if int(data[index : index + 2]) <= 26 : 
+            v = memo[index +1] + memo[index +2]
+        else:
+            v =memo[index + 1]
+        memo[index] = v
+        index -= 1
+
+    return memo[0]
+
 
 if __name__ == "__main__":
-    print(num_of_ways('12345'))
+    print(num_of_way_bottom_to_top('1212121211122231'))
+    print(num_of_way_bottom_to_top('1212121211122221112121212121212121212121212121212'))
+    print(num_of_ways('123456789'))
     print(num_of_ways('2345'))
     print(num_of_ways('345'))
-    print(num_of_ways('30'))
+    print(num_of_ways('31'))
     print(num_of_ways('123'))
-    print(num_of_ways('12'))
+    print(num_of_ways('1'))
+
+    print('bottom_to_top')
+
+    print(num_of_way_bottom_to_top('1212121211122221112121212121212121212121212121212'))
+    print(num_of_way_bottom_to_top('123456789'))
+    print(num_of_way_bottom_to_top('2345'))
+    print(num_of_way_bottom_to_top('345'))
+    print(num_of_way_bottom_to_top('31'))
+    print(num_of_way_bottom_to_top('123'))
+    print(num_of_way_bottom_to_top('1'))
