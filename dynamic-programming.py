@@ -1,7 +1,7 @@
 '''
 Facebook interview question
 How many ways to decode this message?
-The message is a string consist of numbers.These numbers are mapped to legiter.
+The message is a string consisted of numbers.These numbers are mapped to legiters.
 ''->''
 1->a 
 ...
@@ -56,6 +56,12 @@ def num_of_way_bottom_to_top(data):
         if int(data[index : index + 2]) > 26 :
             break
 
+    check_index = index
+    for check_index in range(length) :
+        v = int(data[check_index]) 
+        if  v < 1 :
+            return 0
+    
     memo[index + 1] = 1
     memo[index] = 1
 
@@ -79,7 +85,7 @@ if __name__ == "__main__":
     print(num_of_ways('123456789'))
     print(num_of_ways('2345'))
     print(num_of_ways('345'))
-    print(num_of_ways('31'))
+    print(num_of_ways('30'))
     print(num_of_ways('123'))
     print(num_of_ways('1'))
 
@@ -89,6 +95,6 @@ if __name__ == "__main__":
     print(num_of_way_bottom_to_top('123456789'))
     print(num_of_way_bottom_to_top('2345'))
     print(num_of_way_bottom_to_top('345'))
-    print(num_of_way_bottom_to_top('31'))
+    print(num_of_way_bottom_to_top('30'))
     print(num_of_way_bottom_to_top('123'))
     print(num_of_way_bottom_to_top('1'))
